@@ -24,27 +24,27 @@
 
 .navbar .nav-item .btn {
   color: #fff;
-  background-color: #f03e3e;
+  background-color: #26a69a;
   border: 1px solid transparent;
   border-radius: 50px;
 }
 
-.nav-link.btn.btn-primary:hover, #search-form button:hover, .list-group-item a:hover {
-  background-color: #FFF;
-  color: #f03e3e;
-  border-color: #f03e3e;
+.nav-link.btn.btn-primary:hover, #search-form button:hover, .list-group-item a:hover, #form-box button:hover {
+  background-color: #fff;
+  color: #26a69a;
+  border-color: #26a69a;
 }
 
 /* Baner */
 #top-container {
   padding: 110px;
   background-color: #f7f9fc;
-  border-bottom: 4px solid #dde0f4;
   margin-bottom: 30px;
-  background-image: url('../img/banner2.jpg');
-  background-position: 0 100px;
+  background-image: url('../img/WallpaperMesa2.jpg');
+  background-position: 0 -100px;
+  background-position: absolute;
   background-size: cover;
-  color: #fff;
+  color: #00796b;
 }
 
 #main-title {
@@ -74,7 +74,7 @@
 }
  #search-form button {
   color: #fff;
-  background-color: #f03e3e;
+  background-color: #26a69a;
   border: 1px solid transparent;
 }
 
@@ -123,15 +123,15 @@
   top: 35px;
   height: 50px;
   line-height: 35px;
-  background-color: #f03e3e;
+  background-color: #26a69a;
   border: 1px solid transparent;
   border-radius: 50px;
   color: #fff;
 }
 
 .new-job-label {
-  background-color: aqua;
-  color: #4d5154;
+  background-color: #00e676;
+  color: #fff;
   text-transform: uppercase;
   font-weight: bold;
   padding: 5px 10px;
@@ -144,4 +144,47 @@
 
 .new-job .new-job-label {
   display: block;
+}
+
+/* Create Page */
+
+#add-form-container {
+  margin-top: 100px;
+}
+
+#add-form-container h1 {
+  margin-bottom: 20px;
+}
+
+#form-box {
+  padding: 50px;
+  box-shadow: 0 1px 20px rgba(0,0,0,.15);
+  border-radius: 25px;
+  background-color: #FFF;
+  margin-bottom: 50px;
+}
+
+#add-form-container h2 {
+  color: #00897b;
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+#add-form-container form label {
+  font-weight: bold;
+}
+
+#add-form-container form input, #add-form-container form textarea {
+  border: 2px solid #ccc;
+  background-color: #f8f9fa;
+}
+
+#form-box button {
+  height: 50px;
+  width: 200px;
+  background-color: #26a69a;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  margin-top: 20px;
 }
