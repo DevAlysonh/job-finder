@@ -1,9 +1,13 @@
-const express  = require('express');
-const app      = express();
-const database = require('./database/connection');
-const request  = require('body-parser');
-const path     = require('path');
-const exphbs  = require('express-handlebars');
+const express   = require('express');
+const app       = express();
+const database  = require('./database/connection');
+const request   = require('body-parser');
+const path      = require('path');
+const exphbs    = require('express-handlebars');
+const Job       = require('./Models/Job');
+const Sequelize = require('sequelize');
+const { search } = require('./Routes/web');
+const Op        = Sequelize.Op;
 
 //PORT CONNECTION
 const PORT = 3000;
@@ -34,7 +38,40 @@ database.authenticate()
 
 //routes
 app.get('/', (req, res) => {
-    res.render("index");
+    let search = req.query.job;
+    let query  = '%'+search+'%';
+
+    if(!search) {
+        Job.findAll({
+            order:[
+                ['createdAt', 'DESC']
+            ]
+        })
+        .then(jobs => {
+            res.render("index", {
+                jobs
+            });
+        })
+        .catch(err => console.log(err));
+    } else {
+        Job.findAll({
+            where: {title: {[Op.like]: query}},
+            order:[
+                ['createdAt', 'DESC']
+            ]
+        })
+        .then(jobs => {
+            console.log(search);
+            console.log(search);
+
+            res.render("index", {
+                jobs,
+                search
+            });
+        })
+        .catch(err => console.log(err));
+    }
+
 });
 
 //Using Routes:
