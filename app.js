@@ -59,6 +59,16 @@ app.get('/', (req, res) => {
                 ['createdAt', 'DESC']
             ]
         })
+        .then(jobs => {
+            console.log(seach);
+            console.log(search);
+
+            res.render("index", {
+                jobs,
+                search
+            })
+        })
+        .catch(err => console.log(err));
     }
 
 });
