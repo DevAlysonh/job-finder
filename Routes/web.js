@@ -3,8 +3,8 @@ const router = express.Router();
 const Job = require('../Models/Job');
 
 
-router.get('/test', (req, res) => {
-    res.send('Deu certo!');
+router.get('/add', (req, res) => {
+    res.render('create');
 });
 
 //Add job router
