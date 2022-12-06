@@ -6,6 +6,7 @@ const path      = require('path');
 const exphbs    = require('express-handlebars');
 const Job       = require('./Models/Job');
 const Sequelize = require('sequelize');
+const { search } = require('./Routes/web');
 const Op        = Sequelize.Op;
 
 //PORT CONNECTION
@@ -37,18 +38,29 @@ database.authenticate()
 
 //routes
 app.get('/', (req, res) => {
+    let search = req.query.job;
 
-    Job.findAll({
-        order:[
-            ['createdAt', 'DESC']
-        ]
-    })
-    .then(jobs => {
-        res.render("index", {
-            jobs
-        });
-    })
-    .catch(err => console.log(err));
+    if(!search) {
+        Job.findAll({
+            order:[
+                ['createdAt', 'DESC']
+            ]
+        })
+        .then(jobs => {
+            res.render("index", {
+                jobs
+            });
+        })
+        .catch(err => console.log(err));
+    } else {
+        Job.findAll({
+            where: {title: {[Op.like]: query}},
+            order:[
+                ['createdAt', 'DESC']
+            ]
+        })
+    }
+
 });
 
 //Using Routes:
