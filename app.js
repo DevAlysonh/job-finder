@@ -1,7 +1,9 @@
-const express = require('express');
-const app = express();
+const express  = require('express');
+const app      = express();
 const database = require('./database/connection');
-const request = require('body-parser');
+const request  = require('body-parser');
+const path     = require('path');
+const exphbs  = require('express-handlebars');
 
 //PORT CONNECTION
 const PORT = 3000;
@@ -12,6 +14,14 @@ app.listen(PORT, function() {
 
 //Use body_parser
 app.use(request.urlencoded({ extended: false }));
+
+// Handle Bars
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs.engine({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+// static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 //DB conction
 database.authenticate()
@@ -24,7 +34,7 @@ database.authenticate()
 
 //routes
 app.get('/', (req, res) => {
-    res.send("Está funcionando!");
+    res.render("index");
 });
 
 //Using Routes:
