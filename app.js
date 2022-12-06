@@ -40,7 +40,7 @@ database.authenticate()
 app.get('/', (req, res) => {
     let search = req.query.job;
     let query  = '%'+search+'%';
-    
+
     if(!search) {
         Job.findAll({
             order:[
@@ -61,13 +61,13 @@ app.get('/', (req, res) => {
             ]
         })
         .then(jobs => {
-            console.log(seach);
+            console.log(search);
             console.log(search);
 
             res.render("index", {
                 jobs,
                 search
-            })
+            });
         })
         .catch(err => console.log(err));
     }

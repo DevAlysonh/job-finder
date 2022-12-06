@@ -1,7 +1,7 @@
 <div class="cointainer-fuid" id="top-container">
   <h1 class="text-center" id="main-title">Encontre a vaga dos seus sonhos!</h1>
   <p class="text-center" id="main-subtitle">O melhor site de busca de vagas para TI!</p>
-  <form class="form-inline" id="search-form" action="/">
+  <form class="form-inline" id="search-form" action="/" method="GET">
     <div class="form-group col-md-10">
       <input type="text" class="form-control" id="job" name="job" placeholder="Encontre sua vaga!">
     </div>
@@ -14,7 +14,11 @@
   <div id="jobs-container" class="container">
     <div class="row">
       <div class="col-md-12">
+        {{#if search}}
+          <h2 id="job-list-title">Buscando por: {{search}}</h2>
+        {{else}}
         <h2 id="job-list-title">Veja nossas vagas em destaque</h2>
+        {{/if}}
         <ul id="job-list" class="list-group">
           {{#each jobs}}
             <li class="list-group-item {{#if dataValues.new_job}} new-job {{/if}}">
