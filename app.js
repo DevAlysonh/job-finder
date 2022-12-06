@@ -39,7 +39,8 @@ database.authenticate()
 //routes
 app.get('/', (req, res) => {
     let search = req.query.job;
-
+    let query  = '%'+search+'%';
+    
     if(!search) {
         Job.findAll({
             order:[
